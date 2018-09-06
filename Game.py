@@ -1,8 +1,10 @@
 import sys
-import pygame
-from Timer import *
-from Matrix import *
+
+import BrickPattern
 from Gfx import *
+from Matrix import *
+from Timer import *
+
 
 class Game():
 
@@ -15,6 +17,7 @@ class Game():
         self._timer = Timer()
         self._matrix = Matrix(self._size)
         self._gfx = Gfx(surface=self._screen, brickSize=self._brick_size, size=self._size, timer=self._timer)
+        self._brickPattern = BrickPattern.BrickPattern(0)
 
     def run(self):
         """"
@@ -31,6 +34,7 @@ class Game():
             if keys[pygame.K_RIGHT]:
                 print("Right key pressed")
 
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
@@ -39,5 +43,10 @@ class Game():
 
                     if key == "escape":
                         exitGame = True
+
+                    if key == "up":
+                        self._brickPattern.rotate()
+
+
             self._gfx.draw()
             self._timer.time()
