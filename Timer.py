@@ -19,6 +19,9 @@ class Timer(object):
         self.__delta = (new_time-self.__old_time).total_seconds()
         self.__old_time = new_time
 
+    def getTotalTime(self):
+        return (datetime.datetime.now() - self.__old_time).total_seconds()
+
     def get_delta(self):
         return self.__delta
 
