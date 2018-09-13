@@ -81,7 +81,10 @@ class Game():
                         exitGame = True
 
                     if key == "up":
-                        self._brickPattern.rotate()
+                        print("next max: {}, nextMin {}".format(self._brickPattern.getMaxX(True),
+                                                                self._brickPattern.getMinX(True)))
+                        if self._brickPattern.getMaxX(True) < self._size[1] and self._brickPattern.getMinX(True) >= 0:
+                            self._brickPattern.rotate()
 
                     if key == "right":
                         if self._brickPattern.getMaxX() < self._size[1]:
